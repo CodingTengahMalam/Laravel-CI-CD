@@ -24,7 +24,7 @@ jobs:
       - name: Build and push app image
         uses: docker/build-push-action@v4
         with:
-          context: ./Docker/dockerfile
+          context: .
           file: ./Docker/dockerfile/app.Dockerfile
           push: true
           tags: hellodit/laratm:${{ github.run_number }}
@@ -32,7 +32,7 @@ jobs:
       - name: Build and push nginx image
         uses: docker/build-push-action@v4
         with:
-          context: ./Docker/dockerfile
+          context: .
           file: ./Docker/dockerfile/nginx.Dockerfile
           push: true
           tags: hellodit/laratm-nginx:${{ github.run_number }}
