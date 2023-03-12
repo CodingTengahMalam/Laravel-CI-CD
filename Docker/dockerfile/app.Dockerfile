@@ -29,7 +29,6 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 # Copy project ke dalam container
 COPY --chown=www-data:www-data . /var/www/
 RUN chown -R www-data:www-data /var/www
-RUN chown -R www-data:www-data /var/log/supervisor
 
 # Ganti user ke www-data
 USER www-data
