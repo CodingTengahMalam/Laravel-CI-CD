@@ -5,7 +5,8 @@ services:
     container_name: laratm
     restart: unless-stopped
     tty: true
-    env_file: .env
+    volumes:
+      - .env:/var/www/.env
     networks:
       - laratm-net
 

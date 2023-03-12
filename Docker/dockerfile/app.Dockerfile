@@ -1,5 +1,13 @@
 FROM php:8.1-fpm
 
+ENV HOST_GID=1000 \
+    HOST_UID=1000
+
+# Tambahkan user dengan UID dan GID yang sama
+RUN groupmod -g $HOST_GID www-data && \
+    usermod -u $HOST_UID www-data
+
+
 # Install dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
@@ -26,7 +34,6 @@ RUN pecl install -o -f redis &&  rm -rf /tmp/pear && docker-php-ext-enable redis
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
-# Copy project ke dalam container
 COPY --chown=www-data:www-data . /var/www/
 RUN chown -R www-data:www-data /var/www
 
