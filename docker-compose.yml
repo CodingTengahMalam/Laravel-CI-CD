@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    image: hellodit/laratm:latest
+    container_name: laratm
+    restart: unless-stopped
+    tty: true
+    env_file: .env
+    networks:
+      - laratm-net
+
+  nginx:
+    image: hellodit/laratm-nginx:latest
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8002:80"
+    depends_on:
+      - app
+    networks:
+      - laratm-net
+
+#Docker Networks
+networks:
+  laratm-net:
+    driver: bridge
