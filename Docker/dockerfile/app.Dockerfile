@@ -12,12 +12,6 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     jpegoptim optipng pngquant gifsicle \
     ca-certificates \
-    vim \
-    tmux \
-    unzip \
-    git \
-    cron \
-    supervisor \
     curl
 
 # Clear cache

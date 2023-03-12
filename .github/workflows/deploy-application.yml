@@ -36,4 +36,22 @@ jobs:
           file: ./Docker/dockerfile/nginx.Dockerfile
           push: true
           tags: hellodit/laratm-nginx:${{ github.run_number }}
-      
+  
+  deployment:
+    needs: build
+    environment: staging
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER }}
+          username: ${{ secrets.SERVER_USERNAME}}
+          password: ${{ secrets.SERVER_PASSWORD}}
+          port: ${{ secrets.SERVER_PORT  }}
+          script: |
+            whoami
+            cd ~/app/laratm && git checkout -b staging
+            git pull origin staging
+            docker-compose build 
+            docker-compose up -d      
