@@ -25,7 +25,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./Docker/dockerfile
-          file: app.Dockerfile
+          file: ./Docker/dockerfile/app.Dockerfile
           push: true
           tags: hellodit/laratm:${{ github.run_number }}
       
@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ./Docker/dockerfile
-          file: nginx.Dockerfile
+          file: ./Docker/dockerfile/nginx.Dockerfile
           push: true
           tags: hellodit/laratm-nginx:${{ github.run_number }}
       
