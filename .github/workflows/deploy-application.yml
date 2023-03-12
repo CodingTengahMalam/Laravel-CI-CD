@@ -51,6 +51,7 @@ jobs:
           port: ${{ secrets.SERVER_PORT  }}
           script: |
             whoami
+            export IMAGE_VER=${{ github.run_number }}
             cd ~/app/laratm && git checkout -b staging
             git pull origin staging
             docker compose build 

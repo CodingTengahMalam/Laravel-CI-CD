@@ -1,7 +1,7 @@
 version: '3'
 services:
   app:
-    image: hellodit/laratm:latest
+    image: hellodit/laratm:${IMAGE_VER}
     container_name: laratm
     restart: unless-stopped
     tty: true
@@ -11,7 +11,7 @@ services:
       - laratm-net
 
   nginx:
-    image: hellodit/laratm-nginx:latest
+    image: hellodit/laratm-nginx:${IMAGE_VER}
     container_name: nginx
     restart: unless-stopped
     tty: true
