@@ -53,5 +53,5 @@ jobs:
             whoami
             cd ~/app/laratm && git checkout -b staging
             git pull origin staging
-            docker-compose build 
-            docker-compose up -d      
+            docker compose build 
+            docker compose up -d      
