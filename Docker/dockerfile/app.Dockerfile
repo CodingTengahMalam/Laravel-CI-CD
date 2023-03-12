@@ -37,6 +37,9 @@ COPY --chown=www-data:www-data . /var/www/
 RUN chown -R www-data:www-data /var/www
 RUN chown -R www-data:www-data /var/log/supervisor
 
+# Ganti user ke www-data
+USER www-data
+
 # Install dependency
 WORKDIR /var/www
 
@@ -44,6 +47,3 @@ RUN composer install
 
 # Expose port 9000
 EXPOSE 9000
-
-# Ganti user ke www-data
-USER www-data
